@@ -20,7 +20,7 @@ export class HeroService {
     const heroes = this.http.get<Hero[]>(this.heroesUrl)
                       .pipe(tap(_ => this.log(`fetched heroes`)), 
                             catchError(this.handleError<Hero[]>('getHeroes', [])));
-    this.messageService.add('HeroService: fetched heroes');
+    // this.messageService.add('HeroService: fetched heroes');
     return heroes;
   }
 
@@ -29,7 +29,7 @@ export class HeroService {
     const hero = this.http.get<Hero>(`${this.heroesUrl}/${id}`)
                     .pipe(tap(_ => this.log(`fetched hero id=${id}`)),
                           catchError(this.handleError<Hero>(`getHero id=$id`)));
-    this.messageService.add('HeroService: fetched heroes');
+    // this.messageService.add('HeroService: fetched heroes');
     return hero;
   }
 
@@ -37,6 +37,12 @@ export class HeroService {
     return this.http.put(this.heroesUrl, hero, this.httpOptions)
                     .pipe(tap(_ => this.log(`update hero id=${hero.id}`)),
                           catchError(this.handleError<any>(`updateHero`)))
+  }
+
+  addHero(hero: Hero): Observable<Hero> {
+    return this.http.post(this.heroesUrl, hero, this.httpOptions)
+                    .pipe(tap((newHero: Hero) => this.log(`add hero w/ id=${newHero.id}`)),
+                          catchError(this.handleError<Hero>(`addHero`)))
   }
 
   private log(message:string) {
