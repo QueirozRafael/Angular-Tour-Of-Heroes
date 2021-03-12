@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
 import { HEROES } from '../mock-heroes';
-import { HeroesService } from '../heroes.service';
+import { HeroService } from '../hero.service';
 import { MessageService } from '../message.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { MessageService } from '../message.service';
 export class HeroesComponent implements OnInit {
   heroes: Hero[] = [];
   
-  constructor(private heroService: HeroesService, private messageService: MessageService) { 
+  constructor(private heroService: HeroService, private messageService: MessageService) { 
   }
 
   ngOnInit(): void {
