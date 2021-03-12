@@ -15,5 +15,9 @@ export class HeroesService {
     return heroes;
   }
 
+  getHero(id: number) {
+    return of (HEROES.find(hero => hero.id == id));
+  }
+
   constructor(private messageService: MessageService) { }
 }
