@@ -9,6 +9,7 @@
 input {
   display: block;
   width: 100%;
+  /* max-width: 600px; */
   padding: .5rem;
   margin: 1rem 0;
   box-sizing: border-box;
