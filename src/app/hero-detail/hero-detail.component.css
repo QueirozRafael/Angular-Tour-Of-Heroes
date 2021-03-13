@@ -1,0 +1,12 @@
+input {
+  padding: .5rem;
+  width: 20%;
+  max-width: 600px;
+  box-sizing: border-box;
+  display: inline-block;
+}
+.button {
+  padding: .5rem 1.5rem;
+  font-size: 1rem;
+  margin: 1rem 0.4rem;
+}
