@@ -53,7 +53,8 @@ export class HeroService {
   }
 
   private log(message:string) {
-    this.messageService.add(`HeroService: ${message}`);
+    //this.messageService.add(`HeroService\: ${message}`);
+    console.log(`HeroService\: ${message}`);
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

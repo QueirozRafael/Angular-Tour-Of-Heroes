@@ -27,6 +27,7 @@ export class HeroesComponent implements OnInit {
   addHero(name: string): void {
     name = name.trim();
     if(!name) {
+       this.messageService.add('É obrigatório infomrar o nome do herói.')
        return;
     }
 
