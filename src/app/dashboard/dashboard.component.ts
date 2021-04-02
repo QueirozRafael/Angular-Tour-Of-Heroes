@@ -16,6 +16,7 @@ export class DashboardComponent implements OnInit {
     this.getHeroes();
   }
 
+  //INFO Obtém Top 4 dos heroes
   getHeroes() {
     let random: number;
     this.heroService.getHeroes()

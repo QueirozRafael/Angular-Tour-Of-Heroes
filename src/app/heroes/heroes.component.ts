@@ -15,14 +15,17 @@ export class HeroesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //INFO Obtem a lista de heroes e disponibiliza para ser exibida em tela.
     this.getHeroes()
   }
 
+  //INFO Obtem a lista de heroes.
   getHeroes(): void {
     this.heroService.getHeroes()
       .subscribe(heroes => this.heroes = heroes);
   }
 
+  //INFO Salva ou altera hero.
   addHero(name: string): void {
     name = name.trim();
     if(!name) {
@@ -40,9 +43,9 @@ export class HeroesComponent implements OnInit {
       .subscribe(hero => { this.heroes.push(hero) });
   }
 
+  //INFO Deleta hero.
   deleteHero(hero: Hero): void {
     this.heroes = this.heroes.filter(h => h !== hero);
     this.heroService.delete(hero).subscribe();
   }
-
 }

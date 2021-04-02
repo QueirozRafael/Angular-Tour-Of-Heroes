@@ -20,6 +20,7 @@ export class HeroSearchComponent implements OnInit {
     this.heroes$ = this.searchTerms.pipe(debounceTime(300), distinctUntilChanged(), switchMap((term: string) => this.heroService.search(term)))
   }
 
+  //INFO Obtém lista de heroes que combinam com os caracteres digitados na busca.
   search(term: string): void {
     this.searchTerms.next(term);
   }
