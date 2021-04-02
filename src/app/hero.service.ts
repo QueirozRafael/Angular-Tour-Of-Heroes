@@ -4,12 +4,13 @@ import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
+//import { ConsoleReporter } from 'jasmine';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HeroService {
-  private heroesUrl = 'api/heroes';  // URL to web api
+  private heroesUrl = 'http://localhost:3000/hero';  // URL to web api
   private httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
   constructor(private messageService: MessageService, private http: HttpClient) { }
@@ -36,7 +37,9 @@ export class HeroService {
 
   //INFO Altera o hero na base de dados com base no id informado.
   updateHero(hero: Hero): Observable<any> {
-    return this.http.put(this.heroesUrl, hero, this.httpOptions)
+    console.log(this.heroesUrl+"/"+hero.id);
+    debugger;
+    return this.http.put(this.heroesUrl+"/"+hero.id, hero, this.httpOptions)
                     .pipe(tap(_ => this.log(`update hero id=${hero.id}`)),
                           catchError(this.handleError<any>(`updateHero`)));
   }

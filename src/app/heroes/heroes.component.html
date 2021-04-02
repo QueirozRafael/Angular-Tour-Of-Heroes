@@ -1,6 +1,6 @@
 <div>
     <label id="new-hero">Hero name: </label>
-    <input for="new-hero" #heroName />
+    <input #heroName for="new-hero" [value]="name" />
     <button class="add-button" (click)="addHero(heroName.value);"> Add hero </button>
 </div>
 

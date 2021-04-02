@@ -1,3 +1,4 @@
+import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
@@ -9,6 +10,7 @@ import { MessageService } from '../message.service';
   styleUrls: ['./heroes.component.css']
 })
 export class HeroesComponent implements OnInit {
+  name: string = '';
   heroes: Hero[] = [];
   
   constructor(private heroService: HeroService, private messageService: MessageService) { 
@@ -27,20 +29,21 @@ export class HeroesComponent implements OnInit {
 
   //INFO Salva ou altera hero.
   addHero(name: string): void {
-    name = name.trim();
-    if(!name) {
+    this.name = name.trim();
+    
+    if(!this.name) {
        this.messageService.add('É obrigatório infomrar o nome do herói.')
        return;
     }
 
-    let hero = this.heroes.find(hero => name == hero.name);
+    let hero = this.heroes.find(hero => this.name == hero.name);
     if(hero) {
       this.messageService.add(`Já existe um herói com este nome: Id=${hero.id}, Name=${hero.name}`);
       return;
     }
 
     this.heroService.addHero({ name } as Hero)
-      .subscribe(hero => { this.heroes.push(hero) });
+      .subscribe(hero => { this.getHeroes(), this.name = ""; });  
   }
 
   //INFO Deleta hero.

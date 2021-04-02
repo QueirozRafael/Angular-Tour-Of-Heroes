@@ -29,13 +29,13 @@ export class HeroDetailComponent implements OnInit {
       .subscribe(hero => this.hero = hero);
   }
 
-  //INFO grava ou altera hero com base no Id.
-  save(): void {
+  //INFO Altera hero com base no Id.
+  update(): void {
     this.heroService.updateHero(this.hero)
       .subscribe(() => this.goBack());
   }
 
-  //INFo Volta a página anterior.
+  //INFO Volta a página anterior.
   goBack(): void {
     this.location.back();
   }
